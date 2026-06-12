@@ -80,27 +80,29 @@
   .media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
 
   /* ── header ── */
-  header{position:sticky;top:0;z-index:80;background:rgba(250,249,246,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+  header{position:sticky;top:0;z-index:80;background:rgba(13,12,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);transition:transform .4s cubic-bezier(.2,.7,.3,1)}
   header.hide{transform:translateY(-101%)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav .logo{filter:brightness(0) invert(1)}
   .nav-links{display:flex;gap:32px;font-family:var(--grotesk);font-size:12.5px;letter-spacing:.05em}
-  .nav-links a{color:var(--stone2);transition:.25s;position:relative}
-  .nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--bronze);transition:.3s}
-  .nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
-  .nav .btn{padding:12px 24px}
+  .nav-links a{color:#b3ada1;transition:.25s;position:relative}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:.3s}
+  .nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+  .nav .btn{padding:12px 24px;background:var(--bronze);border-color:var(--bronze);color:#fff}
+  .nav .btn::after{background:var(--ink)}
+  .nav .btn:hover{border-color:var(--ink)}
   @media(max-width:980px){.nav-links{display:none}}
   @media(max-width:640px){.nav{height:64px}.nav .btn{padding:11px 18px;font-size:12px}.nav img{height:34px!important}}
 
   /* ── hero ── */
   .hero{position:relative;background:var(--espresso);color:#F4F1EB;overflow:hidden;padding:0}
-  .hero-stage{position:relative;min-height:clamp(460px,42vw,680px);display:flex;align-items:center}
+  .hero-stage{position:relative;min-height:clamp(460px,42vw,680px);display:flex;align-items:flex-start}
   .hero-bg{position:absolute;inset:0;overflow:hidden}
   .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.04);animation:heroIn 2.4s cubic-bezier(.16,1,.3,1) forwards}
   @keyframes heroIn{to{transform:scale(1)}}
   .hero-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,9,7,.82) 0%,rgba(10,9,7,.45) 42%,rgba(10,9,7,.08) 72%,rgba(10,9,7,0) 100%)}
-  .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:48px var(--pad)}
-  .hero .eyebrow{color:#d8c9ab}.hero .eyebrow::before{background:var(--gold)}
-  .hero h1{color:#fff;margin:18px 0 0;font-size:clamp(44px,5.8vw,88px);font-weight:300;line-height:.97;letter-spacing:-.02em;max-width:13ch}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:clamp(44px,5.5vw,76px) var(--pad) 48px}
+  .hero h1{color:#fff;margin:0;font-size:clamp(44px,5.8vw,88px);font-weight:300;line-height:.97;letter-spacing:-.02em;max-width:13ch}
   .hero .sub{max-width:44ch;margin:20px 0 0;font-size:clamp(15.5px,1.3vw,17.5px);color:#E4DED2;font-weight:300}
   .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
   .hero .actions .btn:not(.btn--light){background:var(--bronze);border-color:var(--bronze);color:#fff}
@@ -113,11 +115,11 @@
   @media(max-width:1000px){.hero-bg img{object-position:74% 40%}}
   @media(max-width:640px){
     .hero-stage{min-height:0;display:block}
-    .hero-bg,.hero-veil{inset:0 0 auto 0;height:clamp(220px,64vw,300px)}
+    .hero-bg,.hero-veil{inset:0 0 auto 0;height:clamp(190px,56vw,250px)}
     .hero-bg img{object-position:86% center}
-    .hero-veil{background:linear-gradient(180deg,rgba(10,9,7,.26),rgba(10,9,7,.14) 30%,rgba(10,9,7,.52) 56%,rgba(10,9,7,.96) 100%)}
-    .hero-inner{padding:clamp(72px,21vw,110px) var(--pad) 0}
-    .hero .eyebrow,.hero h1{text-shadow:0 1px 16px rgba(8,7,5,.85)}
+    .hero-veil{background:linear-gradient(180deg,rgba(10,9,7,.32),rgba(10,9,7,.2) 28%,rgba(10,9,7,.58) 56%,rgba(10,9,7,.97) 100%)}
+    .hero-inner{padding:clamp(46px,13vw,68px) var(--pad) 0}
+    .hero h1{text-shadow:0 1px 16px rgba(8,7,5,.85)}
     .hero h1{font-size:clamp(40px,11vw,54px)}
     .hero .sub{margin-top:24px}
     .hero .actions .btn{flex:1 1 100%;justify-content:center}
@@ -406,7 +408,7 @@
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="https://www.decoraesquadrias.com.br" title="Ir para a loja Decora"><img src="assets/img01.png" alt="Decora Esquadrias" width="558" height="153" style="height:38px;width:auto;display:block"></a>
+    <a href="https://www.decoraesquadrias.com.br" title="Ir para a loja Decora"><img class="logo" src="assets/img01.png" alt="Decora Esquadrias" width="558" height="153" style="height:38px;width:auto;display:block"></a>
     <nav class="nav-links">
       <a href="#linha">A linha</a>
       <a href="#padrao">O padrão</a>
@@ -425,8 +427,7 @@
     <div class="hero-bg"><img src="assets/img02.jpg" alt="Sala ampla com porta de vidro em alumínio preto Decora" fetchpriority="high"></div>
     <div class="hero-veil"></div>
     <div class="hero-inner">
-      <span class="eyebrow rv in">Linha Suprema · Direto do fabricante</span>
-      <h1 class="rv in rv-1">A esquadria da<br>sua obra.</h1>
+      <h1 class="rv in">A esquadria da<br>sua obra.</h1>
       <p class="sub rv in rv-2">Janelas e portas de alumínio sob medida, perfil estreito, branco ou preto — com o que importa feito do jeito certo: roldana com rolamento, vedação que abafa o ruído e pintura que não amarela.</p>
       <div class="actions rv in rv-3">
         <a href="#orcamento" class="btn"><span>Quero orçar minha obra</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
