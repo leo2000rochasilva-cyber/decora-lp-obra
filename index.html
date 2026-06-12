@@ -93,29 +93,35 @@
 
   /* ── hero ── */
   .hero{position:relative;background:var(--espresso);color:#F4F1EB;overflow:hidden;padding:0}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(70% 90% at 88% 6%,rgba(200,168,120,.1),transparent 55%)}
-  .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(36px,5vw,76px);align-items:center;max-width:var(--max);margin:0 auto;padding:clamp(48px,7vh,84px) var(--pad) 0}
-  .hero .pic{position:relative;aspect-ratio:1/1.02;overflow:hidden;background:#15120d}
-  .hero .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroIn 2.4s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-stage{position:relative;min-height:clamp(460px,42vw,680px);display:flex;align-items:center}
+  .hero-bg{position:absolute;inset:0;overflow:hidden}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.04);animation:heroIn 2.4s cubic-bezier(.16,1,.3,1) forwards}
   @keyframes heroIn{to{transform:scale(1)}}
+  .hero-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,9,7,.82) 0%,rgba(10,9,7,.45) 42%,rgba(10,9,7,.08) 72%,rgba(10,9,7,0) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:48px var(--pad)}
   .hero .eyebrow{color:#d8c9ab}.hero .eyebrow::before{background:var(--gold)}
-  .hero h1{color:#fff;margin:18px 0 0;font-size:clamp(44px,5.6vw,84px);font-weight:300;line-height:.97;letter-spacing:-.02em;max-width:13ch}
-  .hero .sub{max-width:46ch;margin:20px 0 0;font-size:clamp(15.5px,1.3vw,17.5px);color:#E4DED2;font-weight:300}
+  .hero h1{color:#fff;margin:18px 0 0;font-size:clamp(44px,5.8vw,88px);font-weight:300;line-height:.97;letter-spacing:-.02em;max-width:13ch}
+  .hero .sub{max-width:44ch;margin:20px 0 0;font-size:clamp(15.5px,1.3vw,17.5px);color:#E4DED2;font-weight:300}
   .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
   .hero .actions .btn:not(.btn--light){background:var(--bronze);border-color:var(--bronze);color:#fff}
   .hero .actions .btn:not(.btn--light)::after{background:var(--ink)}
   .hero .actions .btn:not(.btn--light):hover{border-color:var(--ink)}
-  .hstrip{position:relative;max-width:var(--max);margin:clamp(40px,6vh,64px) auto 0;padding:0 var(--pad);width:100%}
+  .hstrip{position:relative;max-width:var(--max);margin:0 auto;padding:26px var(--pad) 0;width:100%}
   .hstrip .row{display:flex;border-top:1px solid rgba(244,241,235,.18);padding:20px 0 30px;gap:clamp(24px,5vw,72px);flex-wrap:wrap}
   .hs .n{font-family:var(--serif);font-size:clamp(19px,2vw,25px);color:#fff;font-weight:400;line-height:1.2}
   .hs .l{font-family:var(--grotesk);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:5px}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  @media(max-width:1000px){.hero-bg img{object-position:74% 40%}}
   @media(max-width:640px){
-    .hero-grid{padding-top:42px}
-    .hero h1{font-size:clamp(42px,11.5vw,56px)}
-    .hero .pic{aspect-ratio:1/1}
+    .hero-stage{min-height:0;display:block}
+    .hero-bg,.hero-veil{inset:0 0 auto 0;height:clamp(220px,64vw,300px)}
+    .hero-bg img{object-position:86% center}
+    .hero-veil{background:linear-gradient(180deg,rgba(10,9,7,.26),rgba(10,9,7,.14) 30%,rgba(10,9,7,.52) 56%,rgba(10,9,7,.96) 100%)}
+    .hero-inner{padding:clamp(72px,21vw,110px) var(--pad) 0}
+    .hero .eyebrow,.hero h1{text-shadow:0 1px 16px rgba(8,7,5,.85)}
+    .hero h1{font-size:clamp(40px,11vw,54px)}
+    .hero .sub{margin-top:24px}
     .hero .actions .btn{flex:1 1 100%;justify-content:center}
-    .hstrip{margin-top:38px}
+    .hstrip{padding-top:16px}
     .hstrip .row{gap:18px;justify-content:space-between;padding-bottom:24px}
     .hs{flex:1 1 28%}
     .hs .n{font-size:17px}
@@ -391,7 +397,7 @@
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
     .rv,.rvi{opacity:1;transform:none;clip-path:none}
-    .hero .pic img{transform:none}
+    .hero-bg img{transform:none}
     html{scroll-behavior:auto}
   }
 </style>
@@ -415,8 +421,10 @@
 
 <!-- ════ HERO ════ -->
 <section class="hero" id="topo">
-  <div class="hero-grid">
-    <div class="hero-copy">
+  <div class="hero-stage">
+    <div class="hero-bg"><img src="assets/img02.jpg" alt="Sala ampla com porta de vidro em alumínio preto Decora" fetchpriority="high"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-inner">
       <span class="eyebrow rv in">Linha Suprema · Direto do fabricante</span>
       <h1 class="rv in rv-1">A esquadria da<br>sua obra.</h1>
       <p class="sub rv in rv-2">Janelas e portas de alumínio sob medida, perfil estreito, branco ou preto — com o que importa feito do jeito certo: roldana com rolamento, vedação que abafa o ruído e pintura que não amarela.</p>
@@ -425,7 +433,6 @@
         <a href="#linha" class="btn btn--light"><span>Conhecer a linha</span></a>
       </div>
     </div>
-    <div class="pic rv in rv-2"><img src="assets/img02.jpg" alt="Sala ampla com porta de vidro em alumínio preto Decora" fetchpriority="high"></div>
   </div>
   <div class="hstrip rv in rv-4">
     <div class="row">
